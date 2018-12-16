@@ -1,0 +1,27 @@
+{
+  "name": "retro-server",
+  "version": "1.0.0",
+  "description": "Server http for API rest",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "api",
+    "http",
+    "api",
+    "rest",
+    "server"
+  ],
+  "author": "Zineb Azzouzi",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.6.1",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "jsonwebtoken": "^8.3.0",
+    "mysql": "^2.16.0",
+    "sequelize": "^3.33.0"
+  }
+}
