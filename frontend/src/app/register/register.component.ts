@@ -22,13 +22,6 @@ export class RegisterComponent implements OnInit {
     
   }
 
-  onNameKeyUp(event: any) {
-    this.email = event.target.value;
-    this.username = event.target.value;
-    this.password = event.target.value;
-    this.bio = event.target.value;
-  }
-
   register() {
     console.log(this.email);
     this.httpClient.post('http://localhost:8080/api/users/register',
