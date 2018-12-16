@@ -15,30 +15,29 @@ export class RegisterComponent implements OnInit {
   bio: string = '';
 
   constructor(private httpClient: HttpClient) {
-    
-   }
+
+  }
 
   ngOnInit() {
-    
+
   }
 
   register() {
-    console.log(this.email);
     this.httpClient.post('http://localhost:8080/api/users/register',
-    {
-      email: this.email,
-      username: this.username,
-      password: this.password,
-      bio: this.bio
-    })
-    .subscribe(
-    (data: any) => {
-      console.log(data);
+      {
+        email: this.email,
+        username: this.username,
+        password: this.password,
+        bio: this.bio
+      })
+      .subscribe(
+        (data: any) => {
+          console.log(data);
 
-    }
+        }
 
-    )
-   }
- 
+      )
+  }
+
 }
 
