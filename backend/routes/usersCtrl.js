@@ -11,8 +11,8 @@ const PASSWORD_REGEX = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,255}$/;
 module.exports = {
     register: function (req, res) {
         //params
-        var firstName = req.body.firstName;
-        var lastName = req.body.lastName;
+        var firstname = req.body.firstname;
+        var lastname = req.body.lastname;
         var birthday = req.body.birthday;
         var bio = req.body.bio;
         var image = req.body.image;
@@ -22,11 +22,11 @@ module.exports = {
 
         //verification of pseudo length, mail regex ...
 
-        if (firstName == null || lastName == null || email == null || password == null) {
+        if (firstname == null || lastname == null || email == null || password == null) {
             return res.status(400).json({ 'error': 'missing parameters' });
         }
 
-        if (firstName.length >= 30 || firstName.length <= 2 && lastName.length >= 30 || lastName.length <= 4) {
+        if (firstname.length >= 30 || firstname.length <= 2 && lastname.length >= 30 || lastname.length <= 4) {
             return res.status(400).json({ 'error': 'wrong username : must be length 5 - 19' });
         }
 
@@ -63,8 +63,8 @@ module.exports = {
             },
             function (userFound, bcryptedPassword, done) {
                 var newUser = models.User.create({
-                    firstName:firstName,
-                    lastName:lastName,
+                    firstname:firstname,
+                    lastname:lastname,
                     birthday:birthday,
                     bio:bio,
                     image:image,
@@ -206,6 +206,6 @@ module.exports = {
             return res.status(500).json({ 'error': 'cannot update user profile' });
           }
         });
-      }
+    }
 
 }
