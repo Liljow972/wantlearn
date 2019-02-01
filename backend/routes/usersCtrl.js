@@ -11,18 +11,22 @@ const PASSWORD_REGEX = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,255}$/;
 module.exports = {
     register: function (req, res) {
         //params
-        var email = req.body.email;
-        var username = req.body.username;
-        var password = req.body.password;
+        var firstName = req.body.firstName;
+        var lastName = req.body.lastName;
+        var birthday = req.body.birthday;
         var bio = req.body.bio;
+        var image = req.body.image;
+        var email = req.body.email;
+        var password = req.body.password;
+        var location = req.body.location;
 
         //verification of pseudo length, mail regex ...
 
-        if (email == null || username == null || password == null) {
+        if (firstName == null || lastName == null || email == null || password == null) {
             return res.status(400).json({ 'error': 'missing parameters' });
         }
 
-        if (username.length >= 20 || username.length <= 4) {
+        if (firstName.length >= 30 || firstName.length <= 2 && lastName.length >= 30 || lastName.length <= 4) {
             return res.status(400).json({ 'error': 'wrong username : must be length 5 - 19' });
         }
 
@@ -44,6 +48,7 @@ module.exports = {
                         done(null, userFound);
                     })
                     .catch(function (err) {
+                        console.log(err);
                         return res.status(500).json({ 'error': 'unable to verify user' });
                     });
             },
@@ -58,16 +63,20 @@ module.exports = {
             },
             function (userFound, bcryptedPassword, done) {
                 var newUser = models.User.create({
-                    email: email,
-                    username: username,
-                    password: bcryptedPassword,
-                    bio: bio,
-                    isAdmin: 0
+                    firstName:firstName,
+                    lastName:lastName,
+                    birthday:birthday,
+                    bio:bio,
+                    image:image,
+                    email:email,
+                    password:bcryptedPassword,
+                    location:location
                 })
                     .then(function (newUser) {
                         done(newUser);
                     })
                     .catch(function (err) {
+                        console.log(err);
                         return res.status(500).json({ 'error': 'cannot add user' });
                     });
             }
