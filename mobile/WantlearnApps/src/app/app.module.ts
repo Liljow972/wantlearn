@@ -7,6 +7,7 @@ import { MyApp } from './app.component';
 import { SwipeCardsModule } from 'ng2-swipe-cards';
 import { HttpModule } from '@angular/http';
 import { SwingModule } from 'angular2-swing';
+import { HttpClientModule } from '@angular/common/http';
 
 
 import { AboutPage } from '../pages/about/about';
@@ -35,7 +36,8 @@ import { AuthServiceProvider } from '../providers/auth-service/auth-service';
     IonicModule.forRoot(MyApp),
     HttpModule,
     SwingModule,
-    SwipeCardsModule
+    SwipeCardsModule,
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

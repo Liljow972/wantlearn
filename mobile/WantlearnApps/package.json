@@ -27,6 +27,7 @@
         "@ionic/storage": "2.2.0",
         "@mobiscroll/angular": "https://npm.mobiscroll.com/@mobiscroll/angular-trial/-/angular-trial-4.5.2.tgz",
         "angular2-swing": "^0.14.0",
+        "httpclient": "^0.1.0",
         "ionic-angular": "3.9.2",
         "ionicons": "3.0.0",
         "ng2-swipe-cards": "^1.1.1",

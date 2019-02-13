@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, AlertController, ViewController } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 /**
  * Generated class for the RegisterPage page.
@@ -24,9 +25,10 @@ export class RegisterPage {
     private nav: NavController,
     private auth: AuthServiceProvider,
     private alertCtrl: AlertController,
- 
+    private http: HttpClient
   ) {
 }
+
 
   
 
@@ -48,6 +50,23 @@ export class RegisterPage {
           this.showPopup("Error", error);
         });
     }
+
+    let body = {
+      firstName: this.registerCredentials.name,
+      lastName: this.registerCredentials.lastname,
+      email: this.registerCredentials.email,
+      password: this.registerCredentials.password
+    };
+
+    // let headers = new HttpHeaders();
+    // headers = headers.set("Content-Type", "application/x-www-form-urlencoded");
+
+
+    this.http.post("localhost:8080/api/users/register", body)
+      .subscribe(resp => {
+      console.log("response %o, ", resp);
+    });
+
   }
 
   showPopup(title, text) {
